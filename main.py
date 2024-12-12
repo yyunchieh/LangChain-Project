@@ -12,7 +12,7 @@ with open(API_path,"r") as file:
 os.environ['OPENAI_API_KEY'] = openapi_key
 openai.api_key = openapi_key
 
-chat_model = ChatOpenAI(model="gpt-4", temperature=0.5)
+chat_model = ChatOpenAI(model="gpt-4o", temperature=0.5)
 
 # Define the template
 prompt_template = """
