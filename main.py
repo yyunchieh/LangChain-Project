@@ -21,18 +21,41 @@ You are a helpful assistant that writes clean, efficient Python code based on th
     
 Please generate the Python code accordingly. 
 """
-    
+modify_template = """
+You are a helpful assistant that modifies Python code based on the following requirements.
+Original Code:
+{code}
+
+Modification Request:
+{modification_request}
+
+Please generate the updated Python code accordingly.
+"""
+
 # Initionlize the template 
-prompt = PromptTemplate(input_variables=["description"], template=prompt_template)
+generate_prompt = PromptTemplate(input_variables=["description"], template=prompt_template)
+modify_prompt = PromptTemplate(input_variables=["code","modification_request"], template=modify_template)
+
 chain = LLMChain(llm=chat_model, prompt=prompt)
+modify_chain = LLMChain(llm=chat_model, prompt=modify_prompt)
 
 # User interface
 st.title("Code Generator")
 
 # User input requirement
+st.header("Step 1 : Generate Code")
 description = st.text_area("Enter your request:")
-
 if st.button("Generate Code"):
+    try:
+        result = generate_chain.run({"description": description})
+
+
+
+#-----------------------not done yet--------------
+
+
+
+st.button("Generate Code"):
     try:
         result = chain.run({"description": description})
         st.subheader("Generated Code:")
