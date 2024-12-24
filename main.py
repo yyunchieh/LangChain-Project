@@ -60,7 +60,7 @@ if st.button("Generate Code"):
         st.session_state["current_code"] = result
         # Initialize modification history
         st.session_state["modification_history"] = []
-        st.subheader("Generated_code")
+        st.subheader("Generated code")
         st.code(result, language="python")
     except Exception as e:
         st.error(f"Error generating code: {e}")
@@ -70,7 +70,10 @@ if st.session_state["current_code"]:
     st.header("Modify Code")
 
     # Input for modification request
-    modification_request = st.text_area("Enter your modification request:", key = "modification_request")
+    modification_request = st.text_area(
+        "Enter your modification request:",
+        key = "modification_request"
+        )
     
     # Display current code
     st.subheader("Current Code:")
@@ -99,10 +102,11 @@ if st.session_state["current_code"]:
             st.error(f"Error modifying code: {e}")
     
 
-    if st.session_state["modification_history"]:
+    if "modification_history" in st.session_state and st.session_state["modification_history"]:
         st.subheader("Modification History:")
-        for i, request in enumerate(st.session_state["modication_history"], 1):
+        for i, request in enumerate(st.session_state["modification_history"], 1):
             st.write(f"{i}. {request}")
+            
             
             
         
