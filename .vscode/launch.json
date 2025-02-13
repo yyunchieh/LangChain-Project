@@ -1,12 +1,14 @@
 {
     "version": "0.2.0",
     "configurations": [
+        
+
         {
             "name": "Run Streamlit App",
             "type": "python",
             "request": "launch",
             "module": "streamlit",
-            "args": ["run", "C:\\Users\\4019-tjyen\\Desktop\\Code generator\\main.py"],
+            "args": ["run", "C:\\Users\\4019-tjyen\\Desktop\\Document_generator\\document_generator.py"],
             "console": "integratedTerminal"
         }
     ]
