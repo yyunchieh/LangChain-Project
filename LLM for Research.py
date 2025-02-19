@@ -21,7 +21,6 @@ topic = st.text_input("Enter your research topic:")
 
 
 def generate_research_insights(topic):
-    st.text(f"Debug: topic = '{topic}'")
     
     if not topic:
         st.error("Error: No topic provided!")
@@ -41,59 +40,46 @@ def generate_research_insights(topic):
         - Paper 2
         - Paper 3
 
-        Future Research Directions
+        Future Research Directions that no one has done before or only a few people have done
         - Direction 1
         - Direction 2
         - Direction 3
 
-        Titles for Future Research
+        Titles for Future Research Directions 
         - Title 1
         - Title 2
 
         """
-        
+     
+    responses = []
+    for i in range(5):
+         response_markdown = chat_model.predict(prompt_template)
+         responses.append(f" ## Response Set {i+1}\n\n{response_markdown}\n\n---\n")
 
 
-    formatted_prompt = prompt_template.format(topic=topic.strip() if topic else "General research topic")
-    response_sets = []
+    summary_prompt = f"""
+    You are an expert researcher. Given the following insights on "{topic}",
+    provide a **concise summary**.
+    Highlight key points, major themes, and overall trends.
 
-    for _ in range(5):
-        response = chat_model.predict(formatted_prompt)
-        response_json = clean_json_response(response)
+    {''. join(responses)}
+
+    Format the summary in **Markdown** with the section:
+    """
     
-        if response_json:
-             response_json = normalize_keys(response_json)
-             response_sets.append(response_json)
+    #st.text("Generating Summary...")
 
-        else:
-             st.error("Failed to parse AI response. Please try again.")
+    summary = chat_model.predict(summary_prompt)
+
+    if not summary.strip():
+         summary = "Summary generation failed."
+
+    #st.text(f"Debug: Summary content:\n{summary}")
+
+    full_markdown = f" # Research Insights on {topic}\n\n" + "".join(responses) + f"\n\n## Summary of Research Insights\n\n{summary}"
+
     
-    return response_sets
-
-def format_as_markdown(response_sets):
-        markdown_text = f"# Research Insights on {topic}\n\n"
-
-        
-        for idx, response in enumerate(response_sets, start=1):
-             markdown_text += f"## Response Set {idx}\n\n"
-             markdown_text += f"### General Introduction\n{response.get('General_Introduction', 'No data available')}\n\n"
-
-             
-             markdown_text += f"### List of Research Papers\n"
-             for paper in response.get("Research_Papers",[]):
-                  markdown_text += f"- {paper}\n"
-
-             markdown_text += f"\n### Future Research Directions\n"
-             for direction in response.get("Future_Research_Directions",[]):
-                  markdown_text += f"-{direction}\n"
-
-             markdown_text += f"\n### Titles for Future Research\n"
-             for title in response.get("Research_Titles", []):
-                  markdown_text += f"- {title}\n"
-            
-             markdown_text += "\n---\n"
-        
-        return markdown_text
+    return full_markdown
 
 
 if st.button("Generate Research Insights"):
@@ -112,7 +98,3 @@ if st.button("Generate Research Insights"):
     
     else:
         st.warning("Please enter a research topic")
-         
-                  
-                   
-             
