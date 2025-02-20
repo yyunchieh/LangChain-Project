@@ -27,29 +27,27 @@ def generate_research_insights(topic):
         return ""
     
     prompt_template = f"""
-    You are a research assistant that generates structured answers for a given {topic}. 
-    Provide the response in **Markdown format** with the following structure:
-        
-        Research Insights on {topic}
+    You are a highly knowledgeable research assitant specializing in {topic}.
+    Your task is to generate **structured research insights** in **Markdown format**.
+    Your response should follow the exact structure below:
+    
+    # Research Insights on {topic}
 
-        General Introduction
-        Provide an overview of the topic.
+    ## General Itroduction
+    Provide a **concise yet informative** introduction to {topic}.
 
-        List of Research Papers
-        - Paper 1
-        - Paper 2
-        - Paper 3
+    ## List of Research Papers
 
-        Future Research Directions that no one has done before or only a few people have done
-        - Direction 1
-        - Direction 2
-        - Direction 3
+    ## Future Research Directions
+    Identify **novel research directions** that have not been widely explored.
+    Focus on areas where **only a few studies exist** or where **new advancements are possible**.
+    Provide at least **three unique ideas**, with a 1-2 sentence explanation for each.
 
-        Titles for Future Research Directions 
-        - Title 1
-        - Title 2
+    ## Title for Future Research
 
-        """
+    Your response must be formatted in Markdown and strictly follow this structure.
+
+    """
      
     responses = []
     for i in range(5):
@@ -58,9 +56,9 @@ def generate_research_insights(topic):
 
 
     summary_prompt = f"""
-    You are an expert researcher. Given the following insights on "{topic}",
-    provide a **concise summary**.
-    Highlight key points, major themes, and overall trends.
+    You are an expert researcher. Given the following five research insights on "{topic}", provide a **concise summary**.
+
+    Highlight key points, major themes, research papers, and overall trends.
 
     {''. join(responses)}
 
