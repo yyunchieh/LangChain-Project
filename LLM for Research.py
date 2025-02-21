@@ -3,6 +3,12 @@ from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 import os
 import openai
+import spacy
+from spacy.cli import download
+
+download("en_core_web_sm")
+nlp = spacy.load("en_core_web_sm")
+
 
 # Load API key
 API_path = r"C:\Users\4019-tjyen\Desktop\API.txt"
@@ -75,10 +81,25 @@ def generate_research_insights(topic):
 
     #st.text(f"Debug: Summary content:\n{summary}")
 
-    full_markdown = f" # Research Insights on {topic}\n\n" + "".join(responses) + f"\n\n## Summary of Research Insights\n\n{summary}"
+    full_markdown = (
+        f" # Research Insights on {topic}\n\n" 
+        + "".join(responses) 
+        + f"\n\n## Summary of Research Insights\n\n{summary}"
+    )
 
-    
-    return full_markdown
+    return full_markdown, summary
+
+def Ner(text):
+    doc = nlp(text)
+    labeled_text = []
+
+    for token in doc:
+        if token.ent_type_:
+            labeled_text.append(f"[{token.text} ({token.ent_type_})]")
+        else:
+            labeled_text.append(token.text)
+
+    return " ".join(labeled_text)
 
 
 if st.button("Generate Research Insights"):
@@ -95,5 +116,11 @@ if st.button("Generate Research Insights"):
                   with open(md_filename, "r", encoding="utf-8") as md_file:
                        st.download_button("Download Markdown File", md_file, file_name=md_filename)
     
+                  st.subheader("NER-Labeled")
+                  ner_summary = Ner(summary)
+                  st.write(ner_summary)
+
+
+
     else:
         st.warning("Please enter a research topic")
