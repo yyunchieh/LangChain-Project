@@ -37,7 +37,8 @@ def generate_research_insights(topic):
     Provide a **concise yet informative** introduction to {topic}.
 
     ## List of Research Papers
-
+    Please write in **Chicago Style Citation format**
+    
     ## Future Research Directions
     Identify **novel research directions** that have not been widely explored.
     Focus on areas where **only a few studies exist** or where **new advancements are possible**.
