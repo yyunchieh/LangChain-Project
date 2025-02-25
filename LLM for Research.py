@@ -3,11 +3,11 @@ from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 import os
 import openai
-import spacy
-from spacy.cli import download
-
-download("en_core_web_sm")
-nlp = spacy.load("en_core_web_sm")
+import json
+import re
+#import spacy
+#from spacy.cli import download
+#from spacy.pipeline import EntityRuler
 
 
 # Load API key
@@ -77,14 +77,12 @@ def generate_research_insights(topic):
     Format the summary in **Markdown** with the section:
     """
     
-    #st.text("Generating Summary...")
 
     summary = chat_model.predict(summary_prompt)
 
     if not summary.strip():
          summary = "Summary generation failed."
 
-    #st.text(f"Debug: Summary content:\n{summary}")
 
     full_markdown = (
         f" # Research Insights on {topic}\n\n" 
@@ -97,46 +95,56 @@ def generate_research_insights(topic):
 
     return full_markdown, summary
 
+
 def Ner(text):
-    doc = nlp(text)
-    labeled_text = []
+        ner_prompt = f"""
+        Extract named entities from the following text and return them in a structured JSON format.
+        
+        Text:
+        {text}
 
-    for token in doc:
-        if token.ent_type_:
-            labeled_text.append(f"[{token.text} ({token.ent_type_})]")
-        else:
-            labeled_text.append(token.text)
+        Your output should be a valid JSON object with the following keys:
+        - "PERSON": List of names
+        - "ORG": List of organizations
+        - "WORK_OF_ART": List of titles
+        - "DATE": List of dates
+        - "CARDINAL": List of numbers
 
-    return " ".join(labeled_text)
+        If no entity is found, return an empty list for that key.
+        
+        """
 
+        response = chat_model.predict(ner_prompt)
+
+        clean_response = re.sub(r"```json\s*([\s\S]*?)\s*```", r"\1", response.strip())
+
+        try:
+             parsed_json = json.loads(clean_response)
+             return parsed_json
+        except json.JSONDecodeError:
+             return {"error": "Invalid JSON response from model","raw_response": response }
+        
+             
 
 if st.button("Generate Research Insights"):
     if topic:
-             markdown_content, summary = generate_research_insights(topic)
+        markdown_content, summary = generate_research_insights(topic)
+        
+        if markdown_content:
+            md_filename = f"Research_Insights_{topic.replace(' ', '_')}.md"
+            
+            with open(md_filename, "w", encoding="utf-8") as md_file:
+                md_file.write(markdown_content)
 
-             if markdown_content:
-                  md_filename = f"Research_Insights_{topic.replace(' ', '_')}.md"
-                  with open(md_filename, "w", encoding="utf-8") as md_file:
-                       md_file.write(markdown_content)
+                st.success("Markdown file generated successfully!")
 
-                  st.success("Markdown file generated successfully!")
+                with open(md_filename, "r", encoding="utf-8") as md_file:
+                    st.download_button("Download Markdown File", md_file, file_name=md_filename)
 
-                  with open(md_filename, "r", encoding="utf-8") as md_file:
-                       st.download_button("Download Markdown File", md_file, file_name=md_filename)
-
-                  if isinstance(markdown_content, tuple):
+                if isinstance(markdown_content, tuple):
                     markdown_content = "\n".join(markdown_content)
+
+                ner_result = Ner(summary)
+                st.json(ner_result)
+
                     
-    
-                  st.subheader("NER-Labeled Research Papers")
-
-                  papers_start = summary.find("Research Papers")
-                  future_research_start = summary.find("Future Research Directions")
-
-                  if papers_start != -1 and future_research_start != -1:
-                       papers_section = summary[papers_start:future_research_start].strip()
-                       ner_papers = Ner(papers_section)
-                       st.write(ner_papers)
-                  
-                  else:
-                      st.write("Can't find papers, please make sure the format is correct")
