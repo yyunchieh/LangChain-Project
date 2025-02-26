@@ -70,7 +70,10 @@ def generate_research_insights(topic):
     summary_prompt = f"""
     You are an expert researcher. Given the following five research insights on "{topic}", provide a **concise summary**.
 
-    Highlight 1.Key Points and Major Themes 2.Research Papers 3.Overall Trends 4.Future Research Directions 5.Suggested Title for Future Research
+    Your summary must be purely based on the provided research insights. **Do not introduce new information.**
+    
+    Extract 1.Key Points and Major Themes 2.Research Papers (list all of them that were mentioned) 3.Overall Trends 4.Future Research Directions 5.Suggested Title for Future Research
+    in the responses.
 
     {''. join(responses)}
 
@@ -105,10 +108,11 @@ def Ner(text):
 
         Your output should be a valid JSON object with the following keys:
         - "PERSON": List of names
-        - "ORG": List of organizations
-        - "WORK_OF_ART": List of titles
+          *If multiple authors are separated by "and" or "," (e.g. "Smith, John, and Emily Johnson"), split them correctly.
+          For example: Smith, John, and Emily Johnson should be labeled as "Smith", "John", "Emily Johnson"
+        - "PROPER NOUN": List of scholar or professional words
         - "DATE": List of dates
-        - "CARDINAL": List of numbers
+   
 
         If no entity is found, return an empty list for that key.
         
