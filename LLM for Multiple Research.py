@@ -5,10 +5,6 @@ import os
 import openai
 import json
 import re
-#import spacy
-#from spacy.cli import download
-#from spacy.pipeline import EntityRuler
-
 
 # Load API key
 API_path = r"C:\Users\4019-tjyen\Desktop\API.txt"
@@ -73,24 +69,25 @@ def generate_research_insights(keywords):
             Your response must be formatted in Markdown and strictly follow this structure.
 
             """
-     
-            responses_markdown = chat_model.predict(prompt_template)
 
+            response_markdown = ""
+            
+            try:
+                response_markdown = chat_model.predict(prompt_template)
+
+            except Exception as e:
+                st.error(f"Error generating response for '{keyword}': {e}")
+                continue
+
+       
             if isinstance(response_markdown, tuple):
-                response_markdown = response_markdown[0]
+                response_markdown = response_markdown[0] if response_markdown else ""
 
             
             responses.append(f"## Response Set {i+1} for {keyword}\n\n{response_markdown}\n\n---\n")
 
 
-
-
         full_markdown = "".join(responses)
-    
-        if isinstance(response_markdown, tuple):
-              full_markdown = "".join(full_markdown)
-    
-
 
 
         summary_prompt = f"""
@@ -101,9 +98,9 @@ def generate_research_insights(keywords):
         Extract 1.Key Points and Major Themes 2.Research Papers (list all of them that were mentioned) 3.Overall Trends 4.Future Research Directions 5.Suggested Title for Future Research
         in the responses.
 
-        {''. join(responses)}
+        {full_markdown}
 
-        Format the summary in **Markdown** with the section:
+        Format the summary in **Markdown**.
         """
     
 
@@ -149,7 +146,9 @@ def Ner(text):
 
 if st.button("Generate Research Insights"):
     if st.session_state["keyword_list"]:
-        markdown_content, summary = generate_research_insights(st.session_state["keyword_list"])
+        keywords = st.session_state["keyword_list"]
+
+        markdown_content, summary = generate_research_insights(keywords)
         
         if markdown_content:
             md_filename = f"Research_Insights.md"
