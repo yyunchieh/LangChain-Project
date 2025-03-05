@@ -21,7 +21,6 @@ chat_model = ChatOpenAI(model="gpt-4o", temperature=0.8)
 st.title("Research Assistant")
 
 st.header("Add Research Keywords")
-keywords = []
 
 if "keyword_list" not in st.session_state:
     st.session_state["keyword_list"] = []
@@ -43,8 +42,10 @@ def generate_research_insights(keywords):
         st.error("Error: No keywords provided!")
         return "", ""
     
-    responses = []
+    all_responses = []
+
     for keyword in keywords:
+        keyword_responses = []
         for i in range(5):
             prompt_template = f"""
             You are a highly knowledgeable research assitant specializing in {keyword}.
@@ -84,33 +85,35 @@ def generate_research_insights(keywords):
                 response_markdown = response_markdown[0] if response_markdown else ""
 
             
-            responses.append(f"## Response Set {i+1} for {keyword}\n\n{response_markdown}\n\n---\n")
+            keyword_responses.append(f"## Response Set {i+1} for {keyword}\n\n{response_markdown}\n\n---\n")
 
 
-        full_markdown = "".join(responses)
+        all_responses.extend(keyword_responses)
+
+    full_markdown = "".join(all_responses)
 
 
-        summary_prompt = f"""
-        You are an expert researcher. Given the following five research insights, provide a **concise summary**.
+    summary_prompt = f"""
+    You are an expert researcher. Given the following five research insights, provide a **concise summary**.
 
-        Your summary must be purely based on the provided research insights. **Do not introduce new information.**
+    Your summary must be purely based on the provided research insights. **Do not introduce new information.**
     
-        Extract 1.Key Points and Major Themes 2.Research Papers (list all of them that were mentioned) 3.Overall Trends 4.Future Research Directions 5.Suggested Title for Future Research
-        in the responses.
+    Extract 1.Key Points and Major Themes 2.Research Papers (list all of them that were mentioned) 3.Overall Trends 4.Future Research Directions 5.Suggested Title for Future Research
+    in the responses.
 
-        {full_markdown}
+    {full_markdown}
 
-        Format the summary in **Markdown**.
-        """
+    Format the summary in **Markdown**.
+    """
     
 
-        summary = chat_model.predict(summary_prompt)
+    summary = chat_model.predict(summary_prompt)
 
-        if not summary.strip():
-            summary = "Summary generation failed."
+    if not summary.strip():
+        summary = "Summary generation failed."
 
 
-        return full_markdown, summary
+    return full_markdown, summary
 
 
 def Ner(text):
@@ -160,9 +163,6 @@ if st.button("Generate Research Insights"):
 
                 with open(md_filename, "r", encoding="utf-8") as md_file:
                     st.download_button("Download Markdown File", md_file, file_name=md_filename)
-
-                if isinstance(markdown_content, tuple):
-                    markdown_content = "\n".join(markdown_content)
 
                 ner_result = Ner(summary)
                 st.json(ner_result)
