@@ -15,7 +15,7 @@ os.environ['OPENAI_API_KEY'] = openapi_key
 openai.api_key = openapi_key
 
 # Initialize Chat Model
-chat_model = ChatOpenAI(model="gpt-4o", temperature=0.8)
+chat_model = ChatOpenAI(model="gpt-4o", temperature=0.6)
 
 # Streamlit UI
 st.title("Research Assistant")
@@ -68,7 +68,7 @@ def generate_research_insights(keywords):
             ## Title for Future Research
 
             Your response must be formatted in Markdown and strictly follow this structure.
-
+            Avoid hallucinating information, especially in the research papers section.
             """
 
             response_markdown = ""
