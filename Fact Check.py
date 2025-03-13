@@ -125,15 +125,17 @@ if st.button("Generate Research Insights"):
         markdown_content, summary = generate_research_insights(keywords)
         
         if markdown_content:
-            md_filename = f"Research_Insights.md"
+            st.session_state["markdown_content"] = markdown_content
+
+            md_filename = "Research_Insights.md"
             
             with open(md_filename, "w", encoding="utf-8") as md_file:
                 md_file.write(markdown_content + "\n\n# Summary\n" + summary)
 
-                st.success("Markdown file generated successfully!")
+            st.success("Markdown file generated successfully!")
 
-                with open(md_filename, "r", encoding="utf-8") as md_file:
-                    st.download_button("Download Markdown File", md_file, file_name=md_filename)
+            with open(md_filename, "r", encoding="utf-8") as md_file:
+                st.download_button("Download Markdown File", md_file, file_name=md_filename)
 
                # ner_result = Ner(summary)
                #st.json(ner_result)
@@ -142,11 +144,10 @@ if st.button("Generate Research Insights"):
             st.error("Please add at least one keyword")
 
 
-# Fact Check            
+# Fact Check Functions          
 def extract_paper_details(markdown_content):
     pattern = r'"(.*?)" by (.*?), (\d{4})\.'
     matches = re.findall(pattern, markdown_content)
-
     papers = [{"title": m[0], "author": m[1], "year": m[2]} for m in matches]
     return papers
 
@@ -166,16 +167,26 @@ def fact_check_papers(markdown_content):
     verified_papers = []
 
     for paper in papers:
-        is_real = check_paper_existence
+        is_real = check_paper_existence(paper["title"])
         status = "Verified" if is_real else "Fake/Unverified"
         verified_papers.append(f'-"{paper["title"]}" by {paper["author"]}, {paper["year"]}. **{status}**')
 
     return "\n".join(verified_papers)
 
 if st.button("Fact Check Research Papers"):
-    if markdown_content:
-        checked_markdown = fact_check_papers(markdown_content)
-        st.markdown(checked_markdown)
-    
+    if "markdown_content" in st.session_state and st.session_state["markdown_content"]:
+        st.write("checking...")
+
+        markdown_content = st.session_state["markdown_content"]
+        papers = extract_paper_details(markdown_content)
+
+        if not papers:
+            st.warning("未找到符合格式論文")
+
+        else:
+            checked_markdown = fact_check_papers(markdown_content)
+            st.markdown("##檢查結果")
+            st.markdown(checked_markdown)
+
     else:
-        st.error("No research insights generated yet!")
+        st.error("No research insights generated yet! Please generate insights first.")
