@@ -1,0 +1,51 @@
+title,author,year,Status
+Collaborative Filtering for Implicit Feedback Datasets,"Yifan Hu, Yehuda Koren, and Chris Volinsky",2008,Verified
+Factorization Meets the Neighborhood: A Multifaceted Collaborative Filtering Model,Yehuda Koren,2008,Verified
+Deep Content-based Music Recommendation,"Keunwoo Choi, George Fazekas, Kyunghyun Cho, and Mark Sandler",2017,Fake/Unverified
+Neural Collaborative Filtering,"Xiangnan He, Lizi Liao, Hanwang Zhang, Liqiang Nie, Xia Hu, and Tat-Seng Chua",2017,Verified
+Variational Autoencoders for Collaborative Filtering,"Dawen Liang, Rahul G. Krishnan, Matthew D. Hoffman, and Tony Jebara",2018,Verified
+Matrix Factorization Techniques for Recommender Systems,"Yehuda Koren, Robert Bell, and Chris Volinsky",2009,Verified
+A Survey of Collaborative Filtering Techniques,"Michael D. Ekstrand, John T. Riedl, and Joseph A. Konstan",2011,Fake/Unverified
+Deep Learning based Recommender System: A Survey and New Perspectives,"Shuai Zhang, Lina Yao, and Aixin Sun",2019,Verified
+Neural Collaborative Filtering,"Xiangnan He, Lizi Liao, Hanwang Zhang, Liqiang Nie, Xia Hu, and Tat-Seng Chua",2017,Fake/Unverified
+Hybrid Recommender Systems: Survey and Experiments,Robin Burke,2002,Fake/Unverified
+Collaborative Filtering for Implicit Feedback Datasets,"Yifan Hu, Yehuda Koren, and Chris Volinsky",2008,Fake/Unverified
+Matrix Factorization Techniques for Recommender Systems,"Yehuda Koren, Robert Bell, and Chris Volinsky",2009,Fake/Unverified
+DeepFM: A Factorization-Machine based Neural Network for CTR Prediction,"Huifeng Guo, Ruiming Tang, Yunming Ye, Zhenguo Li, and Xiuqiang He",2017,Fake/Unverified
+Neural Collaborative Filtering,"Xiangnan He, Lizi Zhang, Liqiang Nie, Xia Hu, and Tat-Seng Chua",2017,Fake/Unverified
+Variational Autoencoders for Collaborative Filtering,"Dawen Liang, Rahul G. Krishnan, Matthew D. Hoffman, and Tony Jebara",2018,Fake/Unverified
+Matrix Factorization Techniques for Recommender Systems,"Yehuda Koren, Robert Bell, and Chris Volinsky",2009,Fake/Unverified
+Deep Neural Networks for YouTube Recommendations,"Paul Covington, Jay Adams, and Emre Sargin",2016,Verified
+Collaborative Filtering for Implicit Feedback Datasets,"Yifan Hu, Yehuda Koren, and Chris Volinsky",2008,Fake/Unverified
+Wide & Deep Learning for Recommender Systems,Heng-Tze Cheng et al.,2016,Fake/Unverified
+Factorization Machines,Steffen Rendle,2010,Verified
+Collaborative Filtering for Implicit Feedback Datasets,"Yifan Hu, Yehuda Koren, and Chris Volinsky",2008,Fake/Unverified
+A Survey of Collaborative Filtering Techniques,"Michael D. Ekstrand, John T. Riedl, and Joseph A. Konstan",2011,Fake/Unverified
+Deep Neural Networks for YouTube Recommendations,"Paul Covington, Jay Adams, and Emre Sargin",2016,Verified
+Factorization Machines with libFM,Steffen Rendle,2012,Verified
+Neural Collaborative Filtering,"Xiangnan He, Lizi Zhang, et al.",2017,Fake/Unverified
+Edge AI: A Vision for Distributed Intelligence,Mahadev Satyanarayanan,2017,Fake/Unverified
+Accelerating Deep Learning Inference via Deep Compression and Model Partitioning for Edge AI Systems,Song Han et al.,2016,Fake/Unverified
+Deep Learning with Edge Computing: A Review,Xiaofei Wang et al.,2020,Fake/Unverified
+Efficient On-Device Deep Learning: A Survey,Kaiming He et al.,2018,Verified
+Privacy-Preserving Edge AI: Challenges and Opportunities,Yiran Chen et al.,2019,Fake/Unverified
+Deep Learning with Edge Computing: A Review,Zhiwei Xu et al.,2020,Verified
+Efficient AI on the Edge: A Survey,Muhammad Shafique et al.,2021,Fake/Unverified
+Edge AI: A Vision for Distributed Intelligence and Pervasive Computing,Mahadev Satyanarayanan,2017,Fake/Unverified
+Resource Management in Edge AI: A Survey,Xiang Li et al.,2021,Fake/Unverified
+Federated Learning for Edge AI: Opportunities and Challenges,Peter Kairouz et al.,2019,Fake/Unverified
+Edge AI: A Vision for Distributed Machine Learning at the Edge,L. Deng,2019,Verified
+Towards Federated Learning at Scale: System Design,P. Kairouz et al.,2019,Verified
+Deep Learning with Edge Computing: A Review,Y. Chen et al.,2019,Fake/Unverified
+Privacy-Preserving Edge AI: Opportunities and Challenges,T. Li et al.,2020,Verified
+Energy-efficient AI Edge Computing: Hardware and Software Co-Design,X. Zhang et al.,2021,Verified
+Edge AI: A Vision for Distributed and Collaborative Intelligence on Edge Devices,"Yiran Chen, Hai Li, and others",2019,Fake/Unverified
+Deep Learning with Edge Computing: A Review,"Jie Cao, Wei Song, and Qi Zhang",2020,Fake/Unverified
+End-to-End Edge-Cloud AI for 5G and Beyond: Challenges and Future Directions,"Mehdi Bennis, Meryem Simsek, and others",2021,Fake/Unverified
+AI at the Edge: A Survey on Opportunities and Challenges,"Mohammad Ali Salahuddin, Shantanu Sharma, and others",2021,Fake/Unverified
+Privacy-Preserving Edge AI: Solutions and Challenges,"Nisha Panwar, Shree Krishna Sharma, and others",2021,Verified
+Deep Learning with Edge Computing: A Review,"Y. Mao, C. You, J. Zhang, K. Huang, and K. B. Letaief",2017,Fake/Unverified
+Edge AI: A Vision for Distributed Artificial Intelligence in Future Wireless Networks,"Z. Zhou, X. Chen, E. Li, L. Zeng, K. Luo, and J. Zhang",2019,Fake/Unverified
+AI on the Edge: A Survey on Machine Learning at the Network Edge,"S. Samarakoon, M. Bennis, W. Saad, and M. Debbah",2018,Fake/Unverified
+Federated Learning and its Applications in Edge Computing,"Q. Yang, Y. Liu, T. Chen, and Y. Tong",2019,Fake/Unverified
+Efficient and Scalable Deep Learning Inference at the Edge,"S. Han, H. Mao, and W. J. Dally",2016,Fake/Unverified

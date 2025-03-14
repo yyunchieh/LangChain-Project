@@ -6,6 +6,7 @@ import openai
 import json
 import re
 import requests
+import pandas as pd
 
 # Load API key
 API_path = r"C:\Users\4019-tjyen\Desktop\API.txt"
@@ -59,7 +60,10 @@ def generate_research_insights(keywords):
             Provide a **concise yet informative** introduction to {keyword}.
 
             ## List of Research Papers
-            Please write in **Chicago Style Citation format**
+            Each paper **must** follow this exact format:
+            - "Paper Title" by Author Name, Year.
+
+            Ensure the papers are **real** and can be verified in academic databases.
     
             ## Future Research Directions
             Identify **novel research directions** that have not been widely explored.
@@ -175,18 +179,31 @@ def fact_check_papers(markdown_content):
 
 if st.button("Fact Check Research Papers"):
     if "markdown_content" in st.session_state and st.session_state["markdown_content"]:
-        st.write("checking...")
+        st.write("Checking...")
 
         markdown_content = st.session_state["markdown_content"]
         papers = extract_paper_details(markdown_content)
 
         if not papers:
-            st.warning("未找到符合格式論文")
+            st.warning("Did not find the papers")
 
         else:
             checked_markdown = fact_check_papers(markdown_content)
-            st.markdown("##檢查結果")
-            st.markdown(checked_markdown)
+            #st.markdown("## Result")
+            #st.markdown(checked_markdown)
 
+            df = pd.DataFrame(papers)
+            df["Status"] = df["title"].apply(lambda title: "Verified" if check_paper_existence(title) else "Fake/Unverified")
+
+            csv_filename = "Fact_check_results.csv"
+            df.to_csv(csv_filename, index=False, encoding="utf-8")
+
+            st.success(f"Fact check results saved to {csv_filename}")
+
+            with open(csv_filename, "r", encoding="utf-8") as file:
+                st.download_button("Download Fact Check CSV", file, file_name=csv_filename)
     else:
         st.error("No research insights generated yet! Please generate insights first.")
+        
+
+
