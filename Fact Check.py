@@ -16,12 +16,15 @@ with open(API_path,"r") as file:
 os.environ['OPENAI_API_KEY'] = openapi_key
 openai.api_key = openapi_key
 
+IEEE_API_path = r"C:\Users\4019-tjyen\Desktop\IEEE Xplore API.txt"
+with open(IEEE_API_path, "r") as file:
+    IEEE_API_key = file.read().strip() 
+
 # Initialize Chat Model
 chat_model = ChatOpenAI(model="gpt-4o", temperature=0.6)
 
 # Streamlit UI
 st.title("Research Assistant")
-
 st.header("Add Research Keywords")
 
 if "keyword_list" not in st.session_state:
@@ -155,15 +158,21 @@ def extract_paper_details(markdown_content):
     papers = [{"title": m[0], "author": m[1], "year": m[2]} for m in matches]
     return papers
 
-def check_paper_existence(title):
+def check_semantic_scholar(title):
     url = f"https://api.semanticscholar.org/graph/v1/paper/search?query={title}&limit=1"
     response = requests.get(url)
 
     if response.status_code == 200:
         data = response.json()
-        if "data" in data and len(data["data"]) > 0:
-            return True
-    
+        return len(data.get("data",[])) > 0
+    return False
+
+def check_ieee_xplore(title):
+    url = f"https://ieeexploreapi.ieee.org/api/v1/search/articles?querytext={title}&apikey={IEEE_API_key}&max_records=1"
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        return len(data.get("articles", [])) > 0
     return False
 
 def fact_check_papers(markdown_content):
@@ -171,11 +180,19 @@ def fact_check_papers(markdown_content):
     verified_papers = []
 
     for paper in papers:
-        is_real = check_paper_existence(paper["title"])
-        status = "Verified" if is_real else "Fake/Unverified"
-        verified_papers.append(f'-"{paper["title"]}" by {paper["author"]}, {paper["year"]}. **{status}**')
+        found_in_semantic = check_semantic_scholar(paper["title"])
+        found_in_ieee = check_ieee_xplore(paper["title"])
 
-    return "\n".join(verified_papers)
+        status = "Verified" if found_in_semantic or found_in_ieee else "Fake/Unverified"
+        verified_papers.append({
+            "title":paper["title"],
+            "author":paper["author"],
+            "year":paper["year"],
+            "status":status
+        })
+
+
+    return verified_papers
 
 if st.button("Fact Check Research Papers"):
     if "markdown_content" in st.session_state and st.session_state["markdown_content"]:
@@ -185,16 +202,12 @@ if st.button("Fact Check Research Papers"):
         papers = extract_paper_details(markdown_content)
 
         if not papers:
-            st.warning("Did not find the papers")
+            st.warning("Did not find any papers")
 
         else:
-            checked_markdown = fact_check_papers(markdown_content)
-            #st.markdown("## Result")
-            #st.markdown(checked_markdown)
+            checked_papers = fact_check_papers(markdown_content)
 
-            df = pd.DataFrame(papers)
-            df["Status"] = df["title"].apply(lambda title: "Verified" if check_paper_existence(title) else "Fake/Unverified")
-
+            df = pd.DataFrame(checked_papers)
             csv_filename = "Fact_check_results.csv"
             df.to_csv(csv_filename, index=False, encoding="utf-8")
 
