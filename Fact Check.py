@@ -7,6 +7,7 @@ import json
 import re
 import requests
 import pandas as pd
+from scholarly import scholarly
 
 # Load API key
 API_path = r"C:\Users\4019-tjyen\Desktop\API.txt"
@@ -158,14 +159,26 @@ def extract_paper_details(markdown_content):
     papers = [{"title": m[0], "author": m[1], "year": m[2]} for m in matches]
     return papers
 
-def check_semantic_scholar(title):
-    url = f"https://api.semanticscholar.org/graph/v1/paper/search?query={title}&limit=1"
-    response = requests.get(url)
+def check_google_scholar(title):
+    search_query = scholarly.search_pubs(title)
 
-    if response.status_code == 200:
-        data = response.json()
-        return len(data.get("data",[])) > 0
+    for result in search_query:
+        paper_title = result["bib"]["title"]
+        if paper_title.lower() == title.lower():
+            return True
     return False
+
+
+
+
+#def check_semantic_scholar(title):
+#    url = f"https://api.semanticscholar.org/graph/v1/paper/search?query={title}&limit=1"
+#    response = requests.get(url)
+
+#    if response.status_code == 200:
+#        data = response.json()
+#        return len(data.get("data",[])) > 0
+#   return False
 
 def check_ieee_xplore(title):
     url = f"https://ieeexploreapi.ieee.org/api/v1/search/articles?querytext={title}&apikey={IEEE_API_key}&max_records=1"
@@ -180,10 +193,11 @@ def fact_check_papers(markdown_content):
     verified_papers = []
 
     for paper in papers:
-        found_in_semantic = check_semantic_scholar(paper["title"])
+    #   found_in_semantic = check_semantic_scholar(paper["title"])
+        found_in_google_scholar = check_google_scholar(paper["title"])
         found_in_ieee = check_ieee_xplore(paper["title"])
 
-        status = "Verified" if found_in_semantic or found_in_ieee else "Fake/Unverified"
+        status = "Verified" if found_in_google_scholar or found_in_ieee else "Fake/Unverified"
         verified_papers.append({
             "title":paper["title"],
             "author":paper["author"],
