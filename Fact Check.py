@@ -8,6 +8,7 @@ import re
 import requests
 import pandas as pd
 from serpapi import GoogleSearch
+import difflib
 
 # Load API key
 API_path = r"C:\Users\4019-tjyen\Desktop\API.txt"
@@ -22,7 +23,7 @@ with open(IEEE_API_path, "r") as file:
     IEEE_API_key = file.read().strip() 
 
 Serp_API_path = r"C:\Users\4019-tjyen\Desktop\SerpAPI.txt"
-with open(IEEE_API_path, "r") as file:
+with open(Serp_API_path, "r") as file:
     Serp_API_key = file.read().strip() 
 
 # Initialize Chat Model
@@ -175,7 +176,10 @@ def check_google_scholar(title):
     papers = results.get("organic_results", [])
 
     for paper in papers:
-        if paper.get("title", "").lower() == title.lower():
+        found_title = paper.get("title", "").strip().lower()
+        similarity = difflib.SequenceMatcher(None, found_title, title.lower()).ratio()
+
+        if similarity > 0.8:
             return True
     return False
 
@@ -192,10 +196,13 @@ def check_google_scholar(title):
 def check_ieee_xplore(title):
     url = f"https://ieeexploreapi.ieee.org/api/v1/search/articles?querytext={title}&apikey={IEEE_API_key}&max_records=1"
     response = requests.get(url)
-    if response.status_code == 200:
-        data = response.json()
-        return len(data.get("articles", [])) > 0
-    return False
+    if response.status_code != 200:
+        print(f"IEEE API Error:{response.text}")
+        return False
+    
+    data = response.json()
+    return len(data.get("articles", [])) > 0
+
 
 def fact_check_papers(markdown_content):
     papers = extract_paper_details(markdown_content)
@@ -206,7 +213,15 @@ def fact_check_papers(markdown_content):
         found_in_google_scholar = check_google_scholar(paper["title"])
         found_in_ieee = check_ieee_xplore(paper["title"])
 
-        status = "Verified" if found_in_google_scholar or found_in_ieee else "Fake/Unverified"
+        if found_in_google_scholar is None or found_in_ieee is None:
+            status = "Unknown (API Error)"
+            
+        elif found_in_google_scholar or found_in_ieee:
+            status = "Verified"
+        
+        else:
+            status = "Fake/Unverified"
+
         verified_papers.append({
             "title":paper["title"],
             "author":paper["author"],
