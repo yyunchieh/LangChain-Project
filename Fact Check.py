@@ -7,7 +7,7 @@ import json
 import re
 import requests
 import pandas as pd
-from scholarly import scholarly
+from serpapi import GoogleSearch
 
 # Load API key
 API_path = r"C:\Users\4019-tjyen\Desktop\API.txt"
@@ -20,6 +20,10 @@ openai.api_key = openapi_key
 IEEE_API_path = r"C:\Users\4019-tjyen\Desktop\IEEE Xplore API.txt"
 with open(IEEE_API_path, "r") as file:
     IEEE_API_key = file.read().strip() 
+
+Serp_API_path = r"C:\Users\4019-tjyen\Desktop\SerpAPI.txt"
+with open(IEEE_API_path, "r") as file:
+    Serp_API_key = file.read().strip() 
 
 # Initialize Chat Model
 chat_model = ChatOpenAI(model="gpt-4o", temperature=0.6)
@@ -160,15 +164,20 @@ def extract_paper_details(markdown_content):
     return papers
 
 def check_google_scholar(title):
-    search_query = scholarly.search_pubs(title)
+    params = {
+        "engine": "google_scholar",
+        "q": title,
+        "api_key": Serp_API_key
+    }
 
-    for result in search_query:
-        paper_title = result["bib"]["title"]
-        if paper_title.lower() == title.lower():
+    search = GoogleSearch(params)
+    results = search.get_dict()
+    papers = results.get("organic_results", [])
+
+    for paper in papers:
+        if paper.get("title", "").lower() == title.lower():
             return True
     return False
-
-
 
 
 #def check_semantic_scholar(title):
@@ -204,8 +213,7 @@ def fact_check_papers(markdown_content):
             "year":paper["year"],
             "status":status
         })
-
-
+        
     return verified_papers
 
 if st.button("Fact Check Research Papers"):

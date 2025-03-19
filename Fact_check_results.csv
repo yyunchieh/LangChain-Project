@@ -1,51 +1,101 @@
 title,author,year,status
-Aggregate Data Analysis and Data Mining,Jiawei Han,2012,Verified
-The Role of Aggregate Data in Economic Forecasting,James Stock and Mark Watson,2016,Verified
-Privacy-Preserving Aggregation of Time-Series Data,"Charalampos Papamanthou, Elaine Shi, and Roberto Tamassia",2011,Fake/Unverified
-Statistical Analysis of Aggregate Data: Understanding the Role of Context,Andrew Gelman and Jennifer Hill,2007,Verified
-Aggregate Data in Epidemiology: Analyzing Population Health,Sander Greenland,2001,Fake/Unverified
-The Use of Aggregate Data in Economic Analysis,Angus Deaton,1985,Verified
-Aggregate Data Analysis and Visualization in Public Health,John M. Last,2001,Fake/Unverified
-Privacy Preservation in Aggregate Data Publishing,Cynthia Dwork,2006,Fake/Unverified
-Challenges and Opportunities in Big Data: A Case Study on Aggregate Data,Viktor Mayer-Schönberger and Kenneth Cukier,2013,Verified
-Improving Decision-Making with Aggregate Data in Machine Learning,Pedro Domingos,2018,Fake/Unverified
-The Use of Aggregate Data in Economic Research,Angus Deaton,1985,Fake/Unverified
-Aggregate Data Analysis and Data Mining,Jiawei Han,2006,Verified
-Public Health Surveillance Using Aggregate Data,David L. Buckeridge,2007,Fake/Unverified
-Privacy-Preserving Data Aggregation in Wireless Sensor Networks,Wenjing Lou,2006,Fake/Unverified
-Trends in Aggregate Data Analysis: A Review,Karen L. Parker,2018,Verified
-Privacy-Preserving Aggregation of Time-Series Data,Jun Zhao,2018,Fake/Unverified
-Aggregate Data Analysis in Economics: A Review,Robert M. Townsend,2019,Verified
-The Role of Aggregate Data in Health Policy Decision-Making,Sara L. Rhodes,2020,Fake/Unverified
-Challenges in the Use of Aggregate Data for Social Science Research,Emily T. Lake,2021,Verified
-Machine Learning Techniques for Aggregate Data Analysis,Laura M. Perez,2022,Fake/Unverified
-Data Aggregation in Sensor Networks: A Comprehensive Overview,"Jennifer Yick, Biswanath Mukherjee, and Dipak Ghosal",2008,Fake/Unverified
-Privacy-Preserving Data Aggregation in Wireless Sensor Networks,"Kun Liu, Chris Giannella, and Hillol Kargupta",2006,Fake/Unverified
-Aggregate Data Analysis and Mining in the Age of Big Data,"Jiawei Han, Jian Pei, and Hanghang Tong",2011,Fake/Unverified
-Efficient and Secure Data Aggregation in Wireless Sensor Networks,Loukas Lazos and Radha Poovendran,2005,Verified
-A Survey on Data Aggregation Techniques in Wireless Sensor Network,G. Vijayalakshmi and D. Gnanambigai,2016,Fake/Unverified
-Collaborative Filtering for Implicit Feedback Datasets,"Yifan Hu, Yehuda Koren, Chris Volinsky",2008,Fake/Unverified
+Aggregate Data Analysis and Modeling of Urban Air Pollution,John Doe,2019,Fake/Unverified
+The Role of Aggregate Data in Economic Forecasting,Jane Smith,2020,Fake/Unverified
+Privacy-Preserving Techniques in Aggregate Data,Emily Zhang,2021,Fake/Unverified
+Advancements in Aggregate Data Visualization,Michael Brown,2018,Fake/Unverified
+Challenges in Aggregate Data Integration,Laura Green,2022,Fake/Unverified
+Aggregate Data Analysis in Economics,John M. Abowd,2018,Fake/Unverified
+The Role of Aggregate Data in Public Health Research,Elizabeth A. Stuart,2010,Fake/Unverified
+Challenges in Using Aggregate Data for Social Science Research,Gary King,2003,Fake/Unverified
+Data Aggregation Techniques for Large-Scale Data Systems,Hector Garcia-Molina,2015,Fake/Unverified
+Privacy-Preserving Data Aggregation in Wireless Sensor Networks,Chris Karlof,2007,Verified
+Understanding Aggregate Data: A Comprehensive Review,John Doe,2018,Fake/Unverified
+The Role of Aggregate Data in Economic Forecasting,Jane Smith,2020,Fake/Unverified
+Aggregate Data in Public Health: Applications and Challenges,Emily Johnson,2017,Fake/Unverified
+Advances in Aggregate Data Analysis: Techniques and Tools,Robert Brown,2019,Fake/Unverified
+Privacy Concerns and Aggregate Data: Balancing Data Utility and Privacy,Linda Green,2021,Fake/Unverified
+The Use of Aggregate Data in Public Health,John Doe,2019,Fake/Unverified
+Aggregate Data Analysis in Economics: Methods and Applications,Jane Smith,2020,Fake/Unverified
+Privacy-Preserving Data Aggregation Techniques,Emily Zhang,2021,Fake/Unverified
+The Role of Aggregate Data in Educational Assessment,Michael Brown,2018,Fake/Unverified
+Challenges in Aggregating Big Data,Sarah Johnson,2022,Fake/Unverified
+The Role of Aggregate Data in Economic Forecasting,John Doe,2018,Fake/Unverified
+Aggregate Data Analysis in Public Health: Trends and Implications,Jane Smith,2020,Fake/Unverified
+Challenges in Using Aggregate Data for Social Science Research,Emma Brown,2021,Fake/Unverified
+Integrating Aggregate Data in Machine Learning Models,Michael Green,2019,Fake/Unverified
+Privacy Concerns with Aggregate Data in the Digital Age,Lisa White,2022,Fake/Unverified
+Matrix Factorization Techniques for Recommender Systems,Yehuda Koren,2009,Verified
+Collaborative Filtering for Implicit Feedback Datasets,"Yifan Hu, Yehuda Koren, Chris Volinsky",2008,Verified
+A Survey of Collaborative Filtering Techniques,"John S. Breese, David Heckerman, Carl Kadie",1998,Verified
 Deep Neural Networks for YouTube Recommendations,"Paul Covington, Jay Adams, Emre Sargin",2016,Verified
 Factorization Machines,Steffen Rendle,2010,Verified
-AutoRec: Autoencoders Meet Collaborative Filtering,"Suvash Sedhain, Aditya Krishna Menon, Scott Sanner, Lexing Xie",2015,Fake/Unverified
-Neural Collaborative Filtering,"Xiangnan He, Lizi Liao, Hanwang Zhang, Liqiang Nie, Xia Hu, Tat-Seng Chua",2017,Fake/Unverified
-Matrix Factorization Techniques for Recommender Systems,Yehuda Koren,2009,Verified
-A Survey of Collaborative Filtering Techniques,Gediminas Adomavicius and Alexander Tuzhilin,2005,Fake/Unverified
-Deep Neural Networks for YouTube Recommendations,"Paul Covington, Jay Adams, and Emre Sargin",2016,Verified
-Factorization Machines with libFM,Steffen Rendle,2012,Verified
-"The Netflix Recommender System: Algorithms, Business Value, and Innovation",Carlos A. Gomez-Uribe and Neil Hunt,2015,Fake/Unverified
 Collaborative Filtering for Implicit Feedback Datasets,"Yifan Hu, Yehuda Koren, and Chris Volinsky",2008,Verified
-Deep Neural Networks for YouTube Recommendations,"Paul Covington, Jay Adams, and Emre Sargin",2016,Verified
-Factorization Machines,Steffen Rendle,2010,Fake/Unverified
-A Survey of Collaborative Filtering Techniques,"Michael D. Ekstrand, John T. Riedl, and Joseph A. Konstan",2011,Fake/Unverified
-Hybrid Recommender Systems: Survey and Experiments,Robin Burke,2002,Fake/Unverified
-Matrix Factorization Techniques for Recommender Systems,"Yehuda Koren, Robert Bell, Chris Volinsky",2009,Fake/Unverified
-Deep Neural Networks for YouTube Recommendations,"Paul Covington, Jay Adams, Emre Sargin",2016,Fake/Unverified
+A Matrix Factorization Technique with Trust Propagation for Recommendation in Social Networks,Paolo Massa and Paolo Avesani,2007,Verified
+Factorization Machines,Steffen Rendle,2012,Verified
+Deep Learning Based Recommender System: A Survey and New Perspectives,"Shuai Zhang, Lina Yao, and Aixin Sun",2019,Verified
+Neural Collaborative Filtering,"Xiangnan He, Lizi Liao, Hanwang Zhang, Liqiang Nie, Xia Hu, and Tat-Seng Chua",2017,Verified
 Collaborative Filtering for Implicit Feedback Datasets,"Yifan Hu, Yehuda Koren, Chris Volinsky",2008,Verified
 Factorization Machines,Steffen Rendle,2010,Verified
-AutoRec: Autoencoders Meet Collaborative Filtering,"Suvash Sedhain, Aditya Krishna Menon, Scott Sanner, Lexing Xie",2015,Fake/Unverified
-Collaborative Filtering Recommender Systems,"Jonathan L. Herlocker, Joseph A. Konstan, Loren G. Terveen, and John T. Riedl",2004,Fake/Unverified
-Matrix Factorization Techniques for Recommender Systems,"Yehuda Koren, Robert Bell, and Chris Volinsky",2009,Verified
-A Survey of Collaborative Filtering Techniques,Joseph A. Konstan and John Riedl,2012,Fake/Unverified
-Deep Neural Networks for YouTube Recommendations,"Paul Covington, Jay Adams, and Emre Sargin",2016,Verified
-Variational Autoencoders for Collaborative Filtering,"Dawen Liang, Rahul G. Krishnan, Matthew D. Hoffman, and Tony Jebara",2018,Fake/Unverified
+Deep Neural Networks for YouTube Recommendations,"Paul Covington, Jay Adams, Emre Sargin",2016,Verified
+Neural Collaborative Filtering,"Xiangnan He, Lizi Zhang, Liqiang Nie, Xia Hu, Tat-Seng Chua",2017,Verified
+Self-Attentive Sequential Recommendation,"Fei Sun, Jun Liu, Jian Wu, Changhua Pei, Xiao Lin, Wenwu Ou, Peng Jiang",2019,Verified
+Matrix Factorization Techniques for Recommender Systems,Yehuda Koren,2009,Verified
+A Survey of Collaborative Filtering Techniques,"Michael D. Ekstrand, John T. Riedl, and Joseph A. Konstan",2011,Verified
+Deep Learning Based Recommender System: A Survey and New Perspectives,"Shuai Zhang, Lina Yao, Aixin Sun, and Yi Tay",2019,Verified
+Recommender Systems Handbook,"Francesco Ricci, Lior Rokach, and Bracha Shapira",2015,Verified
+Factorization Machines with libFM,Steffen Rendle,2012,Verified
+Matrix Factorization Techniques for Recommender Systems,Yehuda Koren,2009,Verified
+Deep Learning based Recommender System: A Survey and New Perspectives,"Shuai Zhang, Lina Yao, Aixin Sun, and Yi Tay",2019,Verified
+A Survey of Collaborative Filtering Techniques,"John S. Breese, David Heckerman, and Carl Kadie",1998,Verified
+Content-Based Recommendation Systems,Michael J. Pazzani and Daniel Billsus,2007,Verified
+Hybrid Recommender Systems: Survey and Experiments,Robin Burke,2002,Verified
+Wearable Devices in Health Care: Privacy and Information Security Issues,M. Hassanalieragh et al.,2015,Verified
+"A Survey on Wearable Technology: History, State-of-the-Art and Current Challenges",S. Patel et al.,2012,Verified
+Wearable Sensors: Opportunities and Challenges for Low-Cost Health Care,J. P. Bonato,2010,Verified
+Role of Wearable Devices in Healthcare: A Review,T. M. Hossain et al.,2019,Fake/Unverified
+Wearable Technology for Health Monitoring: Current and Future Research Directions,R. A. Khan et al.,2020,Fake/Unverified
+Wearable Devices in Health Monitoring: A Review,John A. Stankovic,2014,Fake/Unverified
+The Impact of Wearable Device Data on Clinical Decision Making,Emily S. Wong and David R. Cheriton,2018,Fake/Unverified
+Privacy Concerns in Wearable Device Data Collection,Amanda J. Smith and Robert T. Johnson,2020,Fake/Unverified
+Integration of Wearable Data in Healthcare Systems: Challenges and Opportunities,Sarah L. Thompson,2019,Fake/Unverified
+Advancements in Sensor Technology for Wearable Devices,Michael B. Anderson,2021,Fake/Unverified
+Wearable Devices: A New Era for Health Care?,J. Patel,2018,Fake/Unverified
+Data Analysis in Wearable Health Devices: Machine Learning Approaches,A. Sharma,2020,Fake/Unverified
+Privacy and Security Challenges in Wearable Health Devices,M. Li,2019,Fake/Unverified
+The Impact of Wearable Technology on Health Outcomes: A Systematic Review,K. Nguyen,2021,Fake/Unverified
+Wearable Sensors for Remote Health Monitoring,S. Chen,2022,Verified
+Wearable Technology and the Quantified Self: A Systematic Review,"Lupton, D.",2016,Fake/Unverified
+Smart Wearables in Healthcare: Signals and Systems,"Pantelopoulos, A., and Bourbakis, N.G.",2010,Fake/Unverified
+Wearable Devices and Their Implementation in Various Domains,"Patel, S., Park, H., Bonato, P., Chan, L., and Rodgers, M.",2012,Verified
+The Impact of Wearable Technology on Gait Analysis: A Review,"Tao, W., Liu, T., Zheng, R., and Feng, H.",2012,Fake/Unverified
+Advancements in Wearable Technology and Its Impact on Health Monitoring: A Review,"Dias, D., and Paulo Silva Cunha, J.",2018,Fake/Unverified
+A Survey of Wearable Devices and Their Use in Healthcare,"S. Patel, H. Park, P. Bonato, L. Chan, and M. Rodgers",2012,Fake/Unverified
+Wearable Technology and Wearable Devices: Everything You Need to Know,John R. Ferguson,2014,Fake/Unverified
+The Future of Wearable Technologies: A Review of the Field,J. M. Kang,2018,Fake/Unverified
+Data Analytics in Wearable Health Monitoring Devices,A. Pantelopoulos and N. Bourbakis,2010,Fake/Unverified
+Security and Privacy in Wearable Health Monitoring Devices,"O. Avancha, A. Baxi, and D. Kotz",2012,Fake/Unverified
+Edge AI: A Vision for Distributed Intelligence on Internet of Things,Muhammad Usama,2020,Fake/Unverified
+Deep Learning with Edge Computing: A Review,Fei Jiang,2019,Verified
+Efficient Inference at the Edge: A Survey on Accelerating Deep Neural Network Inference,Xiaowei Xu,2021,Fake/Unverified
+Privacy and Security in Edge AI: Threats and Countermeasures,Yue Gao,2022,Fake/Unverified
+Energy-Efficient Edge AI: Challenges and Solutions,Rajendra Singh,2020,Fake/Unverified
+Deep Learning with Edge Computing: A Review,Qiang Yang et al.,2020,Verified
+Efficient and Scalable Deep Learning Inference on Edge Devices,Jianyi Yang et al.,2019,Verified
+Edge AI: A Vision for Distributed Artificial Intelligence in Internet of Things,Min Chen et al.,2021,Fake/Unverified
+Resource Management in Edge AI: A Comprehensive Survey,X. Xu et al.,2022,Verified
+Privacy-Preserving AI in Edge Computing: Opportunities and Challenges,L. Zhang et al.,2021,Fake/Unverified
+Deep Learning with Edge Computing: A Review,Qiang Yang,2019,Verified
+Edge AI: Deep Learning on Edge Devices,Muhammad Usama,2020,Fake/Unverified
+AI at the Edge: A Survey,Yu Zhang,2021,Fake/Unverified
+Edge AI: On-Demand Accelerated Inference at the Edge,Alex Krizhevsky,2022,Fake/Unverified
+Challenges and Opportunities in Edge AI,Emily Smith,2023,Fake/Unverified
+Edge AI: Convergence of Edge Computing and Artificial Intelligence,Shaolei Ren et al.,2020,Verified
+Efficient and Privacy-Preserving Edge AI Inference,Tianshi Chen et al.,2021,Fake/Unverified
+Deep Learning with Edge Computing: A Review,Samiullah Khan et al.,2019,Verified
+Resource Management in Edge AI: A Reinforcement Learning Approach,Muhammad Usama et al.,2022,Fake/Unverified
+Federated Learning for Edge AI: Design and Challenges,Qiang Yang et al.,2019,Fake/Unverified
+Edge AI: A Vision for Distributed Machine Learning at the Edge,"Han Yu, Yonggang Wen, Qingyang Song, et al.",2019,Fake/Unverified
+Deep Learning with Edge Computing: A Review,"Amogh G. Manjunath, Prashant P. Patil",2020,Verified
+Efficient and Privacy-Preserving Edge AI: Challenges and Solutions,"Xiaofei Wang, Yiwen Han, Victor C. M. Leung, et al.",2020,Fake/Unverified
+Federated Learning for Edge AI: Design Challenges and Opportunities,"Mehdi S. Momtazpour, Hamed Haddadi",2021,Fake/Unverified
+Edge Intelligence: The Confluence of Edge Computing and Artificial Intelligence,"Tao Zhang, Qian Zhang",2022,Fake/Unverified
