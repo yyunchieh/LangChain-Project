@@ -4,6 +4,7 @@ from langchain.prompts import ChatPromptTemplate
 import json
 import os
 import openai
+import fitz
 
 # Load API key
 API_path = r"C:\Users\4019-tjyen\Desktop\API.txt"
@@ -25,15 +26,23 @@ template = ChatPromptTemplate.from_messages([
 
 #prompt = PromptTemplate(input_variables=["text"], template=template)
 
-st.title("Transcript annotation tool")
+st.title("Transcript Annotation Tool")
 st.write("Please upload the transcript or input it below:")
 
 text_input = st.text_area("Input Transcript", placeholder="Input the transcript that needs to be analyzed...")
-uploaded_file = st.file_uploader("or upload a transcript file", type=["txt"])
+uploaded_file = st.file_uploader("or upload a transcript file", type=["txt", "pdf"])
+
+
+def extract_text_from_pdf(file):
+    doc = fitz.open(stream=file.read(), filetype="pdf")
+    text = "\n".join([page.get_text() for page in doc])
+    return text
 
 if uploaded_file is not None:
-    text_input = uploaded_file.read().decode("utf-8")
-
+    if uploaded_file.name.endswith(".txt"):
+        text_input = uploaded_file.read().decode("utf-8")
+    elif uploaded_file.name.endswith(".pdf"):
+        text_input = extract_text_from_pdf(uploaded_file)
 
 if st.button("Annotate") and text_input.strip():
     st.write("Extracting words...")
@@ -46,7 +55,7 @@ if st.button("Annotate") and text_input.strip():
 
         try:
             entities = json.loads(response.content)
-            st.success("Done!Result:")
+            st.success("Done! Result:")
             st.json(entities)
 
             st.write("### Form")
