@@ -50,7 +50,7 @@ if st.button("Annotate") and text_input.strip():
     messages = template.format_messages(text=text_input)
 
 
-    try:
+    try: 
         response = llm(messages)
 
         try:
