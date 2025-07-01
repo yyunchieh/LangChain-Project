@@ -1,12 +1,10 @@
 import streamlit as st
-from langchain_community.chat_models import ChatOpenAI
+from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 import json
 import os
 import openai
 import fitz
-import traceback
-import re
 
 # Load API key
 API_path = r"C:\Users\4019-tjyen\Desktop\API.txt"
@@ -53,7 +51,7 @@ if st.button("Annotate") and text_input.strip():
 
 
     try: 
-        response = llm.invoke(messages)
+        response = llm(messages)
 
         try:
             entities = json.loads(response.content)
@@ -63,33 +61,12 @@ if st.button("Annotate") and text_input.strip():
             st.write("### Form")
             st.table(entities)
 
-            annotations = []
-
-            for entity_type, entity_list in entities.items():
-                for entity in entity_list:
-                    for match in re.finditer(re.escape(entity), text_input):
-                        annotations.append({
-                            "start": match.start(),
-                            "end": match.end(),
-                            "text": text_input[match.start():match.end()],
-                            "labels": [entity_type.lower()]
-                        })
-
-            if annotations:
-                st.write("### Annotations with positions (JSON format)")
-                st.json(annotations)
-            else:
-                st.warning("No entities found in the text")
-
         except json.JSONDecodeError:
 
-            st.error("The result can't be analyzed in JSON. Below is the raw output:")
-            st.text(response.content) 
-
-
+            st.error("The result can't be analyzed in JSON, Please check prompt or transcripts.")
+    
     except Exception as e:
         st.error(f"Error:{str(e)}")
-        st.text(traceback.format_exc())
 
 else:
     st.info("Please input transcript or upload files, and click Annotate")
