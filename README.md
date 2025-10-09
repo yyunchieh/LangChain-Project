@@ -38,7 +38,7 @@ Summaries are saved in summarizer/reports/.
 ### Advanced Tools
 - `factcheck/`: Fact-check and filter research outputs.
 - `factcheck.py`:
-  - Detects factual inconsistencies in AI-generated research outputs by cross-checking cited papers against:
+- Detects factual inconsistencies in AI-generated research outputs by cross-checking cited papers against:
     - Google Scholar (via SerpAPI)
     - IEEE Xplore API
 - `fact_filtered.py`: Filters and exports verified statements to CSV.
