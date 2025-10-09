@@ -26,7 +26,9 @@ template = ChatPromptTemplate.from_messages([
     ("user", "請分析以下文本，提取命名並返回JSON格式:\n\n{text}")
 ])
 
+
 #prompt = PromptTemplate(input_variables=["text"], template=template)
+
 
 st.title("Transcript Annotation Tool")
 st.write("Please upload the transcript or input it below:")
@@ -77,7 +79,13 @@ if st.button("Annotate") and text_input.strip():
 
             if annotations:
                 st.write("### Annotations with positions (JSON format)")
-                st.json(annotations)
+                st.json(annotations) # show the result
+
+                # write in json and save the output 
+                with open("annotations.json", "w", encoding="utf-8") as f:
+                    json.dump(annotations, f, ensure_ascii=False, indent=2)
+
+                st.success("Annotations saved to annotations.json")
             else:
                 st.warning("No entities found in the text")
 

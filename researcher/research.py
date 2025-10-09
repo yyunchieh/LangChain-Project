@@ -131,20 +131,24 @@ def Ner(text):
              
 
 if st.button("Generate Research Insights"):
+    output_dir = "reports" # assign the file
+    os.makedirs(output_dir, exist_ok=True)
+
+
     if topic:
         markdown_content, summary = generate_research_insights(topic)
         
         if markdown_content:
             md_filename = f"Research_Insights_{topic.replace(' ', '_')}.md"
-            
-            with open(md_filename, "w", encoding="utf-8") as md_file:
+            md_path = os.path.join(output_dir, md_filename)
+
+            with open(md_path, "w", encoding="utf-8") as md_file:
                 md_file.write(markdown_content)
 
-                st.success("Markdown file generated successfully!")
+            st.success(f"Markdown file generated successfully in {output_dir}!")
 
-                with open(md_filename, "r", encoding="utf-8") as md_file:
-                    st.download_button("Download Markdown File", md_file, file_name=md_filename)
-
+            with open(md_path, "r", encoding="utf-8") as md_file:
+                st.download_button("Download Markdown File", md_file, file_name=md_filename)
                 if isinstance(markdown_content, tuple):
                     markdown_content = "\n".join(markdown_content)
 
